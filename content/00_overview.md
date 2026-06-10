@@ -1,4 +1,4 @@
-# A minicourse in Machine Learning for Physicist
+# A mini course in Machine Learning for Physicists
 ## Overview
 
 ```{figure} ../StringE.png
