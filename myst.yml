@@ -22,7 +22,8 @@ project:
   - file: content/07_findingPI
   - file: content/08_CNN
   - file: content/09_further
-  - file: content/10_MLforHEP
+  - file: content/10_transformer
+  - file: content/11_MLforHEP
 site:
   template: book-theme
   options:
