@@ -10,7 +10,7 @@
 </div>
 ```
 
-This course page can also be thought of as my notes on basics of Machine Learning. These particular notes are built upon the **Machine Learning** course web page for the US CMS PURSUE workshop 2025, available here:  [ML PURSUE 2025 course page](https://chattopadhyaya.github.io/ml_pursue2025). Given our modern day use of all things electronic, *you can run, you can hide but you cannot escape ML*. From smart phones to smart toothpastes, ML is everywhere. The aim of these development is to help physicists to wrap their head around all things ML.
+This course page can also be thought of as my notes on basics of Machine Learning. These particular notes are built upon the **Machine Learning** course web page for the US CMS PURSUE workshop 2026, available here:  [ML PURSUE 2026 course page](https://chattopadhyaya.github.io/ml_pursue2026). Given our modern day use of all things electronic, *you can run, you can hide but you cannot escape ML*. From smart phones to smart toothpastes, ML is everywhere. The aim of these development is to help physicists to wrap their head around all things ML.
 
 
 In this course, "*we're here for a good time, not a long time*" so let's first learn what this course in **NOT** for
@@ -93,15 +93,17 @@ align:  center
 ```
 
 ---
-#### Rules for this minicourse
+#### Rules for this mini course
 
 - Each of the following chapter will have a [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://youtu.be/5LB_y-nudGU?si=MYDYvubUH8qLpm89) button. Clikcing on the button will open up the Jupyter Notebook in Google Collab, where you can modify and run the files as you wish. Remember that the only way to learn is to start first.
 
-- There are questions in the jupyter lab notebooks, where the answers are hidden. But a single click would unveil the answers. The minicourse will work on an *honour-system*, you are not allowed to open the answers before you are told to do so. 
+- There are questions in the jupyter lab notebooks, where the answers are hidden. But a single click would unveil the answers. The mini course will work on an *honour-system*, you are not allowed to open the answers before you are told to do so. 
 
 - If some of the code cells do not run in Google Colab, check the warning or error message for missing packages and install them in a new cell using  
   `!pip install <missing-package-name>`  
 before running the notebook again.
+
+- Some figures in this mini course are interactive, especially those using sliders or widgets. These may not fully work in the static JupyterBook version, but they should work once you open the corresponding notebook in Google Colab. In a future version, I will try to include a static workaround for these interactive figures.
 
 ```{note}
 With all these, we are now ready to proceed.
