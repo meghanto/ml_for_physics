@@ -9,6 +9,10 @@ project:
   - Neural-Netowork
   - Physics and ML
   authors: Arghya Chattopadhyay
+  # In-page execution: boots a JupyterLite (Pyodide) kernel inside the page.
+  # patch_thebe_lite.py preloads the course packages into that kernel post-build.
+  jupyter:
+    lite: true
   # github:
   # To autogenerate a Table of Contents, run "jupyter book init --write-toc"
   toc:
