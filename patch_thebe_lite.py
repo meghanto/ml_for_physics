@@ -25,10 +25,13 @@ PACKAGES = [
     "pandas",
     "micropip",
     "packaging",
-    "narwhals",
     # not in the distribution: loaded as wheels from the PyPI CDN.
     # URL wheels are installed without dependency resolution, so their deps
-    # must be listed here too (packaging + narwhals are plotly's).
+    # must be listed here too (packaging + narwhals are plotly's). narwhals
+    # must come as a wheel: the Pyodide 0.27.0 distribution pins 1.10.0,
+    # older than plotly's required >=1.15.1 (its from_native() lacks the
+    # pass_through argument).
+    "https://files.pythonhosted.org/packages/48/ca/36339329c4604adbcc99c899b7eb1ce1a555c499b6a6860757dc9bfed36d/narwhals-2.22.1-py3-none-any.whl",
     "https://files.pythonhosted.org/packages/83/11/00d3c3dfc25ad54e731d91449895a79e4bf2384dc3ac01809010ba88f6d5/seaborn-0.13.2-py3-none-any.whl",
     "https://files.pythonhosted.org/packages/56/6d/0d9848617b9f753b87f214f1c682592f7ca42de085f564352f10f0843026/ipywidgets-8.1.8-py3-none-any.whl",
     "https://files.pythonhosted.org/packages/f9/14/abe5ce876ab5b66ee3c691bf537fcd43d037aea55d447aacf74630a8f31e/plotly-6.8.0-py3-none-any.whl",
