@@ -29,13 +29,28 @@ PACKAGES = [
     "https://files.pythonhosted.org/packages/56/6d/0d9848617b9f753b87f214f1c682592f7ca42de085f564352f10f0843026/ipywidgets-8.1.8-py3-none-any.whl",
 ]
 
-build_dir = Path(sys.argv[1] if len(sys.argv) > 1 else "_build/html")
-bundle = build_dir / "thebe-lite.min.js"
-src = bundle.read_text()
+INJECTION = ",loadPyodideOptions:{packages:" + json.dumps(PACKAGES) + "}}"
 
-if 'whl",loadPyodideOptions:' in src:
-    print(f"{bundle} already patched")
+build_dir = Path(sys.argv[1] if len(sys.argv) > 1 else "_build/html")
+if not build_dir.is_dir():
+    sys.exit(f"build dir {build_dir} does not exist - run the build first")
+
+bundles = sorted(build_dir.rglob("thebe-lite.min.js"))
+if len(bundles) != 1:
+    found = ", ".join(str(b) for b in bundles) or "none"
+    sys.exit(f"expected exactly 1 thebe-lite.min.js under {build_dir}, found: {found}")
+bundle = bundles[0]
+
+src = bundle.read_text(encoding="utf-8")
+
+if INJECTION in src:
+    print(f"{bundle} already patched with the current package list")
     sys.exit(0)
+if re.search(r'-py3-none-any\.whl",loadPyodideOptions:', src):
+    sys.exit(
+        f"{bundle} was already patched with a different package list - "
+        "rebuild to get a pristine bundle before patching"
+    )
 
 # Anchor on the default pyodide-kernel plugin settings object:
 #   {pipliteUrls:[...],pipliteWheelUrl:"...piplite-X.Y.Z-py3-none-any.whl"}
@@ -47,10 +62,5 @@ if len(matches) != 1:
         f"found {len(matches)} - thebe-lite layout changed?"
     )
 
-patched = pattern.sub(
-    lambda m: m.group(1) + ",loadPyodideOptions:{packages:" + json.dumps(PACKAGES) + "}}",
-    src,
-    count=1,
-)
-bundle.write_text(patched)
+bundle.write_text(pattern.sub(lambda m: m.group(1) + INJECTION, src, count=1), encoding="utf-8")
 print(f"patched {bundle}: kernel now preloads {len(PACKAGES)} packages")
